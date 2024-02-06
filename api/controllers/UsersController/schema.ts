@@ -10,5 +10,13 @@ export const CreateUserSchema = z.object({
     .string()
     .min(2, "Username muito curto!")
     .refine((item) => item.toLowerCase()),
-  password: z.string().min(6, "Senha muito curta"),
+  password: z.string().min(6, "Senha muito curta!"),
+})
+
+export const LoginSchema = z.object({
+  username: z
+    .string()
+    .min(2, "Nome de usuário muito curto!")
+    .refine((item) => item.toLowerCase()),
+  password: z.string().min(6, "Senha muito curta!"),
 })

@@ -1,5 +1,5 @@
 import { prisma } from "../../../prisma/prisma"
-import { TCreateUser } from "./types"
+import { TCreateUser, TLogin, TUserDB } from "./types"
 
 class UsersRepository {
   public async create(data: TCreateUser) {
@@ -8,6 +8,16 @@ class UsersRepository {
     })
 
     return user ? true : false
+  }
+
+  public async verify(data: TLogin): Promise<null | TUserDB> {
+    const user = await prisma.user.findFirst({
+      where: {
+        username: data.username,
+      },
+    })
+
+    return user
   }
 }
 
