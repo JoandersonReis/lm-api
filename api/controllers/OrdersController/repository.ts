@@ -44,6 +44,29 @@ class OrdersRepository {
       orders,
     }
   }
+
+  public async deliver(orderId: string) {
+    const order = await prisma.order.update({
+      where: {
+        id: orderId,
+      },
+      data: {
+        status: 1,
+      },
+    })
+
+    return {
+      order,
+    }
+  }
+
+  public async remove(orderId: string) {
+    await prisma.order.delete({
+      where: {
+        id: orderId,
+      },
+    })
+  }
 }
 
 export const ordersRepository = new OrdersRepository()

@@ -14,3 +14,7 @@ export const ShowOrdersParamsSchema = z.object({
   page: z.string().optional(),
   search: z.string().optional(),
 })
+
+export const ParamsSchema = z.object({
+  order_id: z.string().min(1, "Order ID obrigatório"),
+})
