@@ -8,3 +8,9 @@ export const CreateOrderSchema = z.object({
   expired_at: z.string().min(1, "Data de espiração necessária"),
   order_number: z.string().min(1, "Número do pedido obrigatório!"),
 })
+
+export const ShowOrdersParamsSchema = z.object({
+  limit: z.string().optional(),
+  page: z.string().optional(),
+  search: z.string().optional(),
+})
